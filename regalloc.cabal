@@ -1,0 +1,8 @@
+Name:           regalloc
+Version:        0
+Cabal-Version:  >= 1.8
+
+Executable regalloc
+  Hs-source-dirs: exec
+  Main-is:        Main.hs
+  Build-depends:  base
