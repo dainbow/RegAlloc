@@ -2,7 +2,15 @@ Name:           regalloc
 Version:        0
 Cabal-Version:  >= 1.8
 
+Library
+  Hs-source-dirs:  src
+  Exposed-Modules: Base
+                   Parser
+
+  Build-depends:  base,
+                  parsec
+
 Executable regalloc
   Hs-source-dirs: exec
   Main-is:        Main.hs
-  Build-depends:  base
+  Build-depends:  base, regalloc

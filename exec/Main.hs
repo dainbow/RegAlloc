@@ -1,2 +1,6 @@
+module Main where
 
-main = print "123"
+import Parser
+
+main = do
+    l <- readLn
