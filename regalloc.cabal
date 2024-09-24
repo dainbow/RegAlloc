@@ -4,12 +4,14 @@ Cabal-Version:  >= 1.8
 
 Library
   Hs-source-dirs:  src
-  Exposed-Modules: Base
-                   Parser
+  Exposed-Modules: Base,
+                   Parser,
+                   Algo
 
   Build-depends:  base,
                   parsec
 
+  Ghc-options: -XImportQualifiedPost
 Executable regalloc
   Hs-source-dirs: exec
   Main-is:        Main.hs

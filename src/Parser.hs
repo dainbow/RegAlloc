@@ -17,16 +17,17 @@ parseOperands s = case P.parse operand "" s of
 operand = try operandConstant <|> try operandOperation
 
 operandConstant = do
-  string "CONST"
+  try whiteSpace
+  string "#"
   whiteSpace
-  name <- many1 (noneOf " ")
-  return $ Constant name
+  Constant <$> word
 
 operandOperation = do
-  name <- many1 (noneOf " ")
+  try whiteSpace
+  name <- word
   whiteSpace
   uses <- option [] (parens (operand `sepBy` comma))
-  return $ Operation name uses
+  return $ Operation name Nothing uses
 
 lexer = T.makeTokenParser emptyDef
 
@@ -35,3 +36,5 @@ whiteSpace = many (char ' ')
 comma = T.comma lexer
 
 parens = between (char '(') (char ')')
+
+word = many1 (noneOf " (,)#")
